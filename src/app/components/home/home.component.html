@@ -1,0 +1,5 @@
+<app-home-header (homeTab)="changeHomeTab($event)"></app-home-header>
+<div [ngSwitch]="homeTab">
+  <app-login *ngSwitchCase="0"></app-login>
+  <app-signup *ngSwitchCase="1"></app-signup>
+</div>

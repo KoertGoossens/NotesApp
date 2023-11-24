@@ -9,14 +9,14 @@ import { Observable } from 'rxjs';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  public register(user: User): Observable<any> {
+  public registerUser(user: User): Observable<any> {
     return this.http.post<any>(
       "https://localhost:7146/api/Auth/register",
       user
     );
   }
 
-  public login(user: User): Observable<string> {
+  public loginUser(user: User): Observable<string> {
     return this.http.post(
       "https://localhost:7146/api/Auth/login",
       user,

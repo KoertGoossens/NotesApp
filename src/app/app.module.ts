@@ -1,21 +1,41 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { AuthInterceptor } from './services/auth.incerceptor';
+
+import { LoginComponent } from './components/home/login/login.component';
+import { ProfileComponent } from './components/main/profile/profile.component';
+import { HomeComponent } from './components/home/home.component';
+import { HomeHeaderComponent } from './components/home/home-header/home-header.component';
+import { SignupComponent } from './components/home/signup/signup.component';
+import { MainComponent } from './components/main/main.component';
+import { MainHeaderComponent } from './components/main/main-header/main-header.component';
+import { WritenoteComponent } from './components/main/writenote/writenote.component';
+import { ViewnotesComponent } from './components/main/viewnotes/viewnotes.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    ProfileComponent,
+    HomeComponent,
+    HomeHeaderComponent,
+    SignupComponent,
+    MainComponent,
+    MainHeaderComponent,
+    WritenoteComponent,
+    ViewnotesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
