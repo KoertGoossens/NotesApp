@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AuthInterceptor } from './services/auth.incerceptor';
+import { AuthInterceptor } from './services/auth.interceptor';
 
 import { LoginComponent } from './components/home/login/login.component';
 import { ProfileComponent } from './components/main/profile/profile.component';
@@ -16,6 +16,10 @@ import { MainComponent } from './components/main/main.component';
 import { MainHeaderComponent } from './components/main/main-header/main-header.component';
 import { WritenoteComponent } from './components/main/writenote/writenote.component';
 import { ViewnotesComponent } from './components/main/viewnotes/viewnotes.component';
+import { NotesOverviewComponent } from './components/main/viewnotes/notes-overview/notes-overview.component';
+import { SingleNoteComponent } from './components/main/viewnotes/single-note/single-note.component';
+import { EditnoteComponent } from './components/main/viewnotes/editnote/editnote.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { ViewnotesComponent } from './components/main/viewnotes/viewnotes.compon
     MainComponent,
     MainHeaderComponent,
     WritenoteComponent,
-    ViewnotesComponent
+    ViewnotesComponent,
+    NotesOverviewComponent,
+    SingleNoteComponent,
+    EditnoteComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

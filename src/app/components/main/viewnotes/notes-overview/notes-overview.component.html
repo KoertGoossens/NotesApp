@@ -1,0 +1,7 @@
+<h1>Alle berichten</h1>
+<div *ngFor="let note of notes">
+  <p>
+    <button (click)="toSingleNote(note.id)">{{ note.title }}</button>
+    by {{ note.creator?.username }}
+  </p>
+</div>

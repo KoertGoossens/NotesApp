@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/http/auth.service';
 
 @Component({
   selector: 'app-main-header',
@@ -9,14 +10,16 @@ import { Router } from '@angular/router';
 export class MainHeaderComponent {
   @Output() mainTab: EventEmitter<number> = new EventEmitter();
   
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService) {}
   
   changeMainTab(tab: number){
     this.mainTab.emit(tab);
   }
 
-  logoutUser(){
-    localStorage.removeItem("authToken");
-    this.router.navigateByUrl("");
+  onLogoutUser(){
+    this.authService.logoutUser();
+    this.router.navigateByUrl("home");
   }
 }

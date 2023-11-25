@@ -1,0 +1,8 @@
+<button (click)="toNotesOverview()">Alle berichten</button>
+<ng-container *ngIf="allowEditNote">
+  <button (click)="editNote()">Bericht bewerken</button>
+  <button (click)="deleteNote()">Bericht verwijderen</button>
+</ng-container>
+<p>{{ note.title }}</p>
+<p>{{ note.creator?.username }}</p>
+<p>{{ note.content }}</p>

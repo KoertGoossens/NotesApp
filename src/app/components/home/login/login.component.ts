@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models/user';
-import { AuthService } from 'src/app/services/auth.service';
+import { LoginUser } from 'src/app/models/loginuser';
+import { AuthService } from 'src/app/services/http/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +21,7 @@ export class LoginComponent {
   })
 
   submitLoginForm(){
-    const user: User = {
+    const user: LoginUser = {
       username: this.loginForm.value.username,
       password: this.loginForm.value.password
     };

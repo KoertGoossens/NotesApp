@@ -1,1 +1,5 @@
-<p>viewnotes works!</p>
+<div [ngSwitch]="viewType">
+  <app-notes-overview *ngSwitchCase="0" (changeViewType)="toSingleNoteView($event)"></app-notes-overview>
+  <app-single-note *ngSwitchCase="1" [noteId]="noteId" (changeViewType)="toNotesOverview($event)"></app-single-note>
+  <app-editnote *ngSwitchCase="2" [noteId]="noteId" (changeViewType)="toNotesOverview($event)"></app-editnote>
+</div>

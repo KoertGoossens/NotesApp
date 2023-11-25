@@ -1,11 +1,13 @@
+<h1>Welkom op de berichtenapp!</h1>
+<h1>Log in of maak een account aan.</h1>
 <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm()">
   <div>
-    <label for="text">Username</label>
+    <label for="text">Gebruikersnaam</label>
     <input type="text" id="username" name="username" formControlName="username">
   </div>
   <div>
-    <label for="text">Password</label>
-    <input type="text" id="password" name="password" formControlName="password">
+    <label for="text">Wachtwoord</label>
+    <input type="password" id="password" name="password" formControlName="password">
   </div>
-  <button type="submit">Log in</button>
+  <button type="submit">Inloggen</button>
 </form>
