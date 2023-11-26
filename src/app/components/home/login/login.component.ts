@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginUser } from 'src/app/models/loginuser';
+import { ErrorMessage } from 'src/app/models/errormessage';
+import { LoginUser } from 'src/app/models/user/loginuser';
+import { ErrorMessageService } from 'src/app/services/errormessage.service';
 import { AuthService } from 'src/app/services/http/auth.service';
 
 @Component({
@@ -12,28 +14,39 @@ import { AuthService } from 'src/app/services/http/auth.service';
 export class LoginComponent {
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private errorMessageService: ErrorMessageService,
   ) {}
   
   loginForm = new FormGroup({
-    username: new FormControl(),
-    password: new FormControl()
+    username: new FormControl("", [Validators.required, Validators.minLength(3)]),
+    password: new FormControl("", [Validators.required, Validators.minLength(8)]),
   })
 
   submitLoginForm(){
-    const user: LoginUser = {
-      username: this.loginForm.value.username,
-      password: this.loginForm.value.password
-    };
+    if(this.loginForm.valid){
+      const user: LoginUser = {
+        username: this.loginForm.value.username!,
+        password: this.loginForm.value.password!
+      };
 
-    this.authService.loginUser(user).subscribe({
-      next: (token: string) => {
-        localStorage.setItem("authToken", token);
-        this.router.navigateByUrl("/main");
-      },
-      error: err => {
-        // console.error('Login failed:', err);
+      this.authService.loginUser(user).subscribe({
+        next: token => {
+          localStorage.setItem("authToken", token.data);
+          this.router.navigateByUrl("/main");
+        },
+        error: err => {
+          this.errorMessageService.showErrorMessage(err);
+        }
+      });
+    }
+    else {
+      if (!this.loginForm.controls.username.valid){
+        alert("Ongeldige gebruikersnaam/wachtwoord.");
       }
-    });
+      else if (!this.loginForm.controls.password.valid){
+        alert("Ongeldige gebruikersnaam/wachtwoord.");
+      }
+    }
   }
 }

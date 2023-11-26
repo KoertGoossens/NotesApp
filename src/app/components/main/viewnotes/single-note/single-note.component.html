@@ -3,6 +3,17 @@
   <button (click)="editNote()">Bericht bewerken</button>
   <button (click)="deleteNote()">Bericht verwijderen</button>
 </ng-container>
-<p>{{ note.title }}</p>
-<p>{{ note.creator?.username }}</p>
-<p>{{ note.content }}</p>
+<table>
+  <tr>
+    <td>Onderwerp:</td>
+    <td>{{ note.title }}</td>
+  </tr>
+  <tr>
+    <td>Geschreven door:</td>
+    <td>{{ note.creator?.username }}</td>
+  </tr>
+  <tr>
+    <td>Inhoud:</td>
+    <td>{{ note.content }}</td>
+  </tr>
+</table>

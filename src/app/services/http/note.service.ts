@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-import { Note } from '../../models/note';
-import { NoteForList } from '../../models/noteforlist';
+import { Note } from '../../models/note/note';
+import { NoteForList } from '../../models/note/noteforlist';
+import { ServiceResponse } from 'src/app/models/serviceresponse';
 
 @Injectable({
   providedIn: 'root'
@@ -13,28 +14,28 @@ export class NoteService {
 
   constructor(private http: HttpClient) {}
 
-  public getNoteById(id: number): Observable<Note> {
+  public getNoteById(id: number): Observable<ServiceResponse> {
     const url = `${this.apiUrl}/${id}`;
-    return this.http.get<Note>(url);
+    return this.http.get<ServiceResponse>(url);
   }
 
-  public getAllNotes(): Observable<NoteForList[]> {
+  public getAllNotes(): Observable<ServiceResponse> {
     const url = `${this.apiUrl}/getall`;
-    return this.http.get<NoteForList[]>(url);
+    return this.http.get<ServiceResponse>(url);
   }
 
-  public submitNote(note: Note): Observable<any> {
+  public submitNote(note: Note): Observable<ServiceResponse> {
     const url = `${this.apiUrl}/submit`;
-    return this.http.post<any>(url, note);
+    return this.http.post<ServiceResponse>(url, note);
   }
 
-  public editNote(note: Note): Observable<any> {
+  public editNote(note: Note): Observable<ServiceResponse> {
     const url = `${this.apiUrl}/edit`;
-    return this.http.put<any>(url, note);
+    return this.http.put<ServiceResponse>(url, note);
   }
   
-  public deleteNote(id: number): Observable<void> {
+  public deleteNote(id: number): Observable<ServiceResponse> {
     const url = `${this.apiUrl}/${id}`;
-    return this.http.delete<void>(url);
+    return this.http.delete<ServiceResponse>(url);
   }
 }

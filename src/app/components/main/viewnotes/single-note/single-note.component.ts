@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Note } from 'src/app/models/note';
-import { UserProfile } from 'src/app/models/userprofile';
+import { Note } from 'src/app/models/note/note';
+import { UserProfile } from 'src/app/models/user/userprofile';
+import { ErrorMessageService } from 'src/app/services/errormessage.service';
 import { NoteService } from 'src/app/services/http/note.service';
 import { UserService } from 'src/app/services/http/user.service';
 
@@ -19,28 +20,30 @@ export class SingleNoteComponent {
 
   constructor(
     private userService: UserService,
-    private noteService: NoteService) {}
+    private noteService: NoteService,
+    private errorMessageService: ErrorMessageService,
+    ) {}
   
   ngOnInit(){
     this.userService.getCurrentUser().subscribe({
-      next: (p: UserProfile) => {
-        this.profile = p;
+      next: p => {
+        this.profile = p.data;
       },
       error: err => {
-        // console.error(err);
+        this.errorMessageService.showErrorMessage(err);
       }
     });
 
     this.noteService.getNoteById(this.noteId).subscribe({
       next: n => {
-        this.note = n;
+        this.note = n.data;
 
-        if(n.creator?.username === this.profile.username){
+        if(n.data.creator?.username === this.profile.username){
           this.allowEditNote = true;
         }
       },
       error: err => {
-        // console.error(err);
+        this.errorMessageService.showErrorMessage(err);
       }
     });
   }
@@ -59,7 +62,7 @@ export class SingleNoteComponent {
         alert("bericht verwijderd");
       },
       error: err => {
-        // console.error(err);
+        this.errorMessageService.showErrorMessage(err);
       }
     });
 

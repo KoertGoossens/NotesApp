@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from '../../models/user';
+import { User } from '../../models/user/user';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-import { LoginUser } from '../../models/loginuser';
+import { LoginUser } from '../../models/user/loginuser';
+import { ServiceResponse } from 'src/app/models/serviceresponse';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +14,14 @@ export class AuthService {
   
   constructor(private http: HttpClient) {}
 
-  public registerUser(user: User): Observable<any> {
+  public registerUser(user: User): Observable<ServiceResponse> {
     const url = `${this.apiUrl}/register`;
-    return this.http.post<any>(url, user);
+    return this.http.post<ServiceResponse>(url, user);
   }
 
-  public loginUser(user: LoginUser): Observable<string> {
+  public loginUser(user: LoginUser): Observable<ServiceResponse> {
     const url = `${this.apiUrl}/login`;
-    return this.http.post(url, user, { responseType: "text" });
+    return this.http.post<ServiceResponse>(url, user);
   }
 
   public logoutUser(){

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { NoteForList } from 'src/app/models/noteforlist';
+import { NoteForList } from 'src/app/models/note/noteforlist';
+import { ErrorMessageService } from 'src/app/services/errormessage.service';
 import { NoteService } from 'src/app/services/http/note.service';
 
 @Component({
@@ -12,15 +13,18 @@ export class NotesOverviewComponent {
 
   notes: NoteForList[] = [];
   
-  constructor(private noteService: NoteService) {}
+  constructor(
+    private noteService: NoteService,
+    private errorMessageService: ErrorMessageService,
+    ) {}
 
   ngOnInit() {
     this.noteService.getAllNotes().subscribe({
       next: n => {
-        this.notes = n;
+        this.notes = n.data;
       },
       error: err => {
-        // console.error('Login failed:', err);
+        this.errorMessageService.showErrorMessage(err);
       }
     });
   }
