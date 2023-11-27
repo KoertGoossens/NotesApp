@@ -2,5 +2,6 @@
   <button (click)="changeMainTab(0)">Profiel</button>
   <button (click)="changeMainTab(1)">Berichten</button>
   <button (click)="changeMainTab(2)">Nieuw bericht</button>
+  <button *ngIf="user.role === 'Admin'" (click)="changeMainTab(3)">Admin</button>
   <button (click)="onLogoutUser()">Uitloggen</button>
 </header>

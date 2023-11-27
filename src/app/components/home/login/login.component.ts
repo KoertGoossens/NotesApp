@@ -36,7 +36,7 @@ export class LoginComponent {
           this.router.navigateByUrl("/main");
         },
         error: err => {
-          this.errorMessageService.showErrorMessage(err);
+          this.errorMessageService.handleServerError(err);
         }
       });
     }

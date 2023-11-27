@@ -20,6 +20,7 @@ import { NotesOverviewComponent } from './components/main/viewnotes/notes-overvi
 import { SingleNoteComponent } from './components/main/viewnotes/single-note/single-note.component';
 import { EditnoteComponent } from './components/main/viewnotes/editnote/editnote.component';
 import { ErrorComponent } from './components/error/error.component';
+import { AdminpanelComponent } from './components/main/adminpanel/adminpanel.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ErrorComponent } from './components/error/error.component';
     NotesOverviewComponent,
     SingleNoteComponent,
     EditnoteComponent,
-    ErrorComponent
+    ErrorComponent,
+    AdminpanelComponent
   ],
   imports: [
     BrowserModule,

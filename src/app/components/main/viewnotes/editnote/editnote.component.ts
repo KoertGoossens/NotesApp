@@ -29,7 +29,7 @@ export class EditnoteComponent {
         this.noteForm.patchValue(n.data);
       },
       error: err => {
-        this.errorMessageService.showErrorMessage(err);
+        this.errorMessageService.handleServerError(err);
       }
     });
   }
@@ -52,7 +52,7 @@ export class EditnoteComponent {
           window.location.reload();
         },
         error: err => {
-          this.errorMessageService.showErrorMessage(err);
+          this.errorMessageService.handleServerError(err);
         }
       });
     }

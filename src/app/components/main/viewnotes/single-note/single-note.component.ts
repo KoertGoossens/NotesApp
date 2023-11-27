@@ -30,7 +30,7 @@ export class SingleNoteComponent {
         this.profile = p.data;
       },
       error: err => {
-        this.errorMessageService.showErrorMessage(err);
+        this.errorMessageService.handleServerError(err);
       }
     });
 
@@ -43,7 +43,7 @@ export class SingleNoteComponent {
         }
       },
       error: err => {
-        this.errorMessageService.showErrorMessage(err);
+        this.errorMessageService.handleServerError(err);
       }
     });
   }
@@ -62,7 +62,7 @@ export class SingleNoteComponent {
         alert("bericht verwijderd");
       },
       error: err => {
-        this.errorMessageService.showErrorMessage(err);
+        this.errorMessageService.handleServerError(err);
       }
     });
 

@@ -15,4 +15,9 @@ export class UserService {
   public getCurrentUser(): Observable<ServiceResponse> {
     return this.http.get<ServiceResponse>(this.apiUrl);
   }
+
+  public getAllUsers(): Observable<ServiceResponse> {
+    const url = `${this.apiUrl}/getall`;
+    return this.http.get<ServiceResponse>(url);
+  }
 }

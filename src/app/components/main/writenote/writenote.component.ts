@@ -33,7 +33,7 @@ export class WritenoteComponent {
           window.location.reload();
         },
         error: err => {
-          this.errorMessageService.showErrorMessage(err);
+          this.errorMessageService.handleServerError(err);
         }
       });
     }

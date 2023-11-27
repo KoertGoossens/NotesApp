@@ -24,7 +24,7 @@ export class NotesOverviewComponent {
         this.notes = n.data;
       },
       error: err => {
-        this.errorMessageService.showErrorMessage(err);
+        this.errorMessageService.handleServerError(err);
       }
     });
   }

@@ -4,22 +4,22 @@ import { ErrorMessageService } from 'src/app/services/errormessage.service';
 import { UserService } from 'src/app/services/http/user.service';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: 'app-adminpanel',
+  templateUrl: './adminpanel.component.html',
+  styleUrls: ['./adminpanel.component.css']
 })
-export class ProfileComponent {
-  profile = new UserProfile();
-
+export class AdminpanelComponent {
+  users: UserProfile[] = [];
+  
   constructor(
     private userService: UserService,
-    private errorMessageService: ErrorMessageService,
+    private errorMessageService: ErrorMessageService
   ) {}
 
-  ngOnInit() {
-    this.userService.getCurrentUser().subscribe({
-      next: p => {
-        this.profile = p.data;
+  ngOnInit(){
+    this.userService.getAllUsers().subscribe({
+      next: u => {
+        this.users = u.data;
       },
       error: err => {
         this.errorMessageService.handleServerError(err);

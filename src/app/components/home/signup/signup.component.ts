@@ -37,7 +37,7 @@ export class SignupComponent {
           this.homeTab.emit(0);
         },
         error: err => {
-          this.errorMessageService.showErrorMessage(err);
+          this.errorMessageService.handleServerError(err);
         }
       });
     }

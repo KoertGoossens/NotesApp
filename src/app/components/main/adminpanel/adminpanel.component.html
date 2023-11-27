@@ -1,0 +1,11 @@
+<h3>Geregistreerde gebruikers:</h3>
+<table>
+  <tr>
+    <th>Gebruikersnaam</th>
+    <th>E-mailadres</th>
+  </tr>
+  <tr *ngFor="let user of users">
+    <td>{{ user.username }}</td>
+    <td>{{ user.email }}</td>
+  </tr>
+</table>
