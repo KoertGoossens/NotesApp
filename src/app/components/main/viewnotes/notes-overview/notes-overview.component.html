@@ -1,8 +1,8 @@
-<h1>Alle berichten</h1>
+<h1 class="headtext">Alle berichten</h1>
 <table>
   <tr *ngFor="let note of notes">
     <td>
-      <button (click)="toSingleNote(note.id)">{{ note.title }}</button>
+      <button class="notebutton" (click)="toSingleNote(note.id)">{{ note.title }}</button>
     </td>
     <td>
       door {{ note.creator?.username }}

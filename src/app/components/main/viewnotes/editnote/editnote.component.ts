@@ -58,10 +58,10 @@ export class EditnoteComponent {
     }
     else {
       if (!this.noteForm.controls.title.valid){
-        alert("Onderwerp moet ingevuld worden.");
+        alert("Vul a.u.b. een onderwerp in.");
       }
       else if (!this.noteForm.controls.content.valid){
-        alert("Inhoud moet ingevuld worden.");
+        alert("Bericht kan niet leeg gelaten worden.");
       }
     }
   }

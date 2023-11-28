@@ -1,19 +1,21 @@
-<button (click)="toNotesOverview()">Alle berichten</button>
-<ng-container *ngIf="allowEditNote">
-  <button (click)="editNote()">Bericht bewerken</button>
-  <button (click)="deleteNote()">Bericht verwijderen</button>
-</ng-container>
-<table>
+<div class="headbutton">
+  <button class="button" (click)="toNotesOverview()">Alle berichten</button>
+  <ng-container *ngIf="allowEditNote">
+    <button class="button" (click)="editNote()">Bericht bewerken</button>
+    <button class="button" (click)="deleteNote()">Bericht verwijderen</button>
+  </ng-container>
+</div>
+<table class="texttable">
   <tr>
     <td>Onderwerp:</td>
     <td>{{ note.title }}</td>
   </tr>
   <tr>
-    <td>Geschreven door:</td>
+    <td>Auteur:</td>
     <td>{{ note.creator?.username }}</td>
   </tr>
   <tr>
-    <td>Inhoud:</td>
+    <td>Bericht:</td>
     <td>{{ note.content }}</td>
   </tr>
 </table>

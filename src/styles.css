@@ -1,3 +1,87 @@
+* {
+  font-family: "Verdana", sans-serif;
+}
+
+.appcontainer {
+  max-width: 600px;
+  min-height: 300px;
+  overflow: auto;
+  margin: 20px auto;
+  background-color: rgb(228, 241, 241);
+  border: 1px solid rgb(33, 118, 187);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.headtext {
+  margin: 4px;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.headtextsec {
+  margin: 4px;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.button {
+  background-color: #525252;
+  color: #ffffff;
+  font-size: 15px;
+  margin: 4px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.headbutton {
+  margin-bottom: 10px;
+}
+
+.submitbutton {
+  margin-top: 25px;
+}
+
+.inputlabel {
+  margin: 4px;
+  font-size: 14px;
+}
+
+.inputtext {
+  margin: 4px;
+  padding: 5px 5px;
+}
+
+.inputtextbig {
+  margin: 4px;
+  padding: 5px 5px;
+}
+
+table {
+  margin: 4px;
+}
+
 th {
+  font-size: 16px;
   text-align: left;
+  padding-right: 20px;
+  padding-bottom: 5px;
+}
+
+td {
+  font-size: 14px;
+}
+
+.texttable td {
+  padding: 5px 5px;
 }

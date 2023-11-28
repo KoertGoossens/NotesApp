@@ -1,0 +1,8 @@
+.notebutton {
+  background-color: rgb(226, 226, 226);
+  margin-right: 15px;
+  border-width: 1px;
+  border-radius: 10px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
