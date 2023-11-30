@@ -1,27 +1,23 @@
-# NotesApp
+Notes App ('Berichtenapp') is a simple web application where users can register an account, log in, and leave notes for others to be read.
+Notes can be modified and deleted by the user who wrote them.
+The data seeder project can be used to populate the database with mock users and notes.
+One of these mock users has an admin role (username: jan_vanzanten, password: welkom123) and has special access to a tab showing a list of all registered users.
+The UI is currently written in Dutch.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
+Notes App consists of:
+  - a front-end built with Angular
+  - a back-end built with ASP.NET, using Entity Framework Core and an SQL Server Express database
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To run the Notes App:
+  - front-end:
+    - clone the front-end project (github.com/KoertGoossens/NotesApp)
+    - make sure Node.js is installed
+    - make sure the Angular CLI is installed (PowerShell: _npm install -g @angular/cli_)
+    - run _npm install_ to install the project's dependencies
+    - run _ng serve -o_ to run the application
+  - back-end:
+    - clone the back-end project (github.com/KoertGoossens/NotesAPI)
+    - make sure SQL Server Express is installed
+    - create the SQL Server Express database (_update-database_ in Visual Studio's Package Manager Console)
+    - to populate the database, set the _DataSeeder_ project as start-up project and run it once
+    - set the NotesAPI project as start-up project and run it
