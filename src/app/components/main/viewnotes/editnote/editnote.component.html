@@ -5,19 +5,19 @@
 <form novalidate [formGroup]="noteForm" (ngSubmit)="submitNote()">
   <table class="inputtable">
     <tr>
-      <td>
+      <td class="inputlabel">
         <label for="title">Onderwerp:</label>
       </td>
       <td>
         <input type="text" id="title" name="title" formControlName="title">
       </td>
     </tr>
-    <tr>
+    <tr class="inputtabletext">
       <td>Gepost op:</td>
       <td>{{ getNoteTimeCreated(note.timeCreated) }}</td>
     </tr>
     <tr>
-      <td>
+      <td class="inputlabel">
         <label for="content">Bericht:</label>
       </td>
       <td>

@@ -20,26 +20,32 @@ export class SignupComponent {
   registerForm = new FormGroup({
     username: new FormControl("", [Validators.required, Validators.minLength(3)]),
     email: new FormControl("", [Validators.required, Validators.email]),
-    password: new FormControl("", [Validators.required, Validators.minLength(8)]),
+    passwordA: new FormControl("", [Validators.required, Validators.minLength(8)]),
+    passwordB: new FormControl()
   })
 
   submitRegisterForm(){
-    if(this.registerForm.valid){
-      const user: User = {
-        username: this.registerForm.value.username!,
-        email: this.registerForm.value.email!,
-        password: this.registerForm.value.password!
-      };
-  
-      this.authService.registerUser(user).subscribe({
-        next: result => {
-          alert("Account aangemaakt.");
-          this.homeTab.emit(0);
-        },
-        error: err => {
-          this.errorMessageService.handleServerError(err);
-        }
-      });
+    if(this.registerForm.valid) {
+      if(this.registerForm.value.passwordA !== this.registerForm.value.passwordB) {
+        alert("De ingevoerde wachtwoorden zijn niet gelijk aan elkaar.");
+      }
+      else {
+        const user: User = {
+          username: this.registerForm.value.username!,
+          email: this.registerForm.value.email!,
+          password: this.registerForm.value.passwordA!
+        };
+    
+        this.authService.registerUser(user).subscribe({
+          next: result => {
+            alert("Account aangemaakt.");
+            this.homeTab.emit(0);
+          },
+          error: err => {
+            this.errorMessageService.handleServerError(err);
+          }
+        });
+      }
     }
     else {
       if (!this.registerForm.controls.username.valid){
@@ -48,7 +54,7 @@ export class SignupComponent {
       else if (!this.registerForm.controls.email.valid){
         alert("Geen geldig e-mailadres.");
       }
-      else if (!this.registerForm.controls.password.valid){
+      else if (!this.registerForm.controls.passwordA.valid){
         alert("Wachtwoord moet minimaal 8 tekens lang zijn.");
       }
     }

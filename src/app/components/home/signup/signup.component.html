@@ -2,7 +2,7 @@
 <form novalidate [formGroup]="registerForm" (ngSubmit)="submitRegisterForm()">
   <table class="inputtable">
     <tr>
-      <td>
+      <td class="inputlabel">
         <label for="text">Gebruikersnaam:</label>
       </td>
       <td>
@@ -10,7 +10,7 @@
       </td>
     </tr>
     <tr>
-      <td>
+      <td class="inputlabel">
         <label for="text">E-mailadres:</label>
       </td>
       <td>
@@ -18,11 +18,19 @@
       </td>
     </tr>
     <tr>
-      <td>
+      <td class="inputlabel">
         <label for="text">Wachtwoord:</label>
       </td>
       <td>
-        <input type="password" id="password" name="password" formControlName="password">
+        <input type="password" id="passwordA" name="passwordA" formControlName="passwordA">
+      </td>
+    </tr>
+    <tr>
+      <td class="inputlabel">
+        <label for="text">Herhaal wachtwoord:</label>
+      </td>
+      <td>
+        <input type="password" id="passwordB" name="passwordB" formControlName="passwordB">
       </td>
     </tr>
   </table>

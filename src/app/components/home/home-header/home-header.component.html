@@ -1,4 +1,4 @@
 <header class="header">
-  <button class="button" (click)="changeHomeTab(0)">Inloggen</button>
-  <button class="button" (click)="changeHomeTab(1)">Account aanmaken</button>
+  <button class="button" [routerLink]="['/login']">Inloggen</button>
+  <button class="button" [routerLink]="['/register']">Account aanmaken</button>
 </header>

@@ -73,10 +73,15 @@ td {
 
 .inputtable input, textarea {
   padding: 5px 5px;
+  margin-bottom: 5px;
 }
 
 .inputlabel {
   vertical-align: top;
-  padding-right: 5px;
+  padding-right: 10px;
   padding-top: 6px;
+}
+
+.inputtabletext td {
+  padding-bottom: 5px;
 }
