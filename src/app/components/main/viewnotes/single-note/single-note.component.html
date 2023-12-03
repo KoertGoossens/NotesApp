@@ -5,21 +5,23 @@
     <button class="button" (click)="deleteNote()">Bericht verwijderen</button>
   </ng-container>
 </div>
-<table class="texttable">
-  <tr>
-    <td>Onderwerp:</td>
-    <td>{{ note.title }}</td>
-  </tr>
-  <tr>
-    <td>Auteur:</td>
-    <td>{{ note.creator?.username }}</td>
-  </tr>
-  <tr>
-    <td>Gepost op:</td>
-    <td>{{ getNoteTimeCreated(note.timeCreated) }}</td>
-  </tr>
-  <tr>
-    <td>Bericht:</td>
-    <td>{{ note.content }}</td>
-  </tr>
-</table>
+<div class="body">
+  <table class="texttable">
+    <tr>
+      <td>Onderwerp:</td>
+      <td>{{ note.title }}</td>
+    </tr>
+    <tr>
+      <td>Auteur:</td>
+      <td>{{ note.creator?.username }}</td>
+    </tr>
+    <tr>
+      <td>Gepost op:</td>
+      <td>{{ getNoteTimeCreated(note.timeCreated) }}</td>
+    </tr>
+    <tr>
+      <td>Bericht:</td>
+      <td>{{ note.content }}</td>
+    </tr>
+  </table>
+</div>

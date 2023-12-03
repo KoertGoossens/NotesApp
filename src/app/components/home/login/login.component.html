@@ -1,23 +1,26 @@
-<h1 class="headtext">Welkom op de berichtenapp!</h1>
-<h2 class="headtextsec">Log in of maak een account aan.</h2>
-<form novalidate [formGroup]="loginForm" (ngSubmit)="submitLoginForm()">
-  <table class="inputtable">
-    <tr>
-      <td class="inputlabel">
-        <label for="text">Gebruikersnaam:</label>
-      </td>
-      <td>
-        <input type="text" id="username" name="username" formControlName="username">
-      </td>
-    </tr>
-    <tr>
-      <td class="inputlabel">
-        <label for="text">Wachtwoord:</label>
-      </td>
-      <td>
-        <input type="password" id="password" name="password" formControlName="password">
-      </td>
-    </tr>
-  </table>
-  <button class="button submitbutton" type="submit">Inloggen</button>
-</form>
+<app-home-header [activeTab]="0"></app-home-header>
+<div class="body">
+  <h1 class="headtext">Welkom op de berichtenapp!</h1>
+  <h2 class="headtextsec">Log in of maak een account aan.</h2>
+  <form novalidate [formGroup]="loginForm" (ngSubmit)="submitLoginForm()">
+    <table class="inputtable">
+      <tr>
+        <td class="inputlabel">
+          <label for="text">Gebruikersnaam:</label>
+        </td>
+        <td>
+          <input type="text" id="username" name="username" formControlName="username">
+        </td>
+      </tr>
+      <tr>
+        <td class="inputlabel">
+          <label for="text">Wachtwoord:</label>
+        </td>
+        <td>
+          <input type="password" id="password" name="password" formControlName="password">
+        </td>
+      </tr>
+    </table>
+    <button class="button submitbutton" type="submit">Inloggen</button>
+  </form>
+</div>

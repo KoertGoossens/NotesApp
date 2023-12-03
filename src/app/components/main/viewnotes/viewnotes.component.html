@@ -1,3 +1,4 @@
+<app-main-header [activeTab]="1"></app-main-header>
 <div [ngSwitch]="viewType">
   <app-notes-overview *ngSwitchCase="0" (changeViewType)="toSingleNoteView($event)"></app-notes-overview>
   <app-single-note *ngSwitchCase="1" [noteId]="noteId" (changeViewType)="toNotesOverview($event)"></app-single-note>

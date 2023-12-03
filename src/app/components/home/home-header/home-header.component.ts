@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-home-header',
@@ -6,8 +6,15 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./home-header.component.css']
 })
 export class HomeHeaderComponent {
+  @Input() activeTab: number = 0;
   @Output() homeTab: EventEmitter<number> = new EventEmitter();
   
+  buttonColor: string[] = [];
+
+  ngOnInit(){
+    this.buttonColor[this.activeTab] = "#0080FF";
+  }
+
   changeHomeTab(tab: number){
     this.homeTab.emit(tab);
   }

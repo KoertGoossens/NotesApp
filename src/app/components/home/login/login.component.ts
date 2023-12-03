@@ -33,20 +33,15 @@ export class LoginComponent {
       this.authService.loginUser(user).subscribe({
         next: token => {
           localStorage.setItem("authToken", token.data);
-          this.router.navigateByUrl("/main");
+          this.router.navigateByUrl("profile");
         },
         error: err => {
           this.errorMessageService.handleServerError(err);
         }
       });
     }
-    else {
-      if (!this.loginForm.controls.username.valid){
-        alert("Ongeldige gebruikersnaam/wachtwoord.");
-      }
-      else if (!this.loginForm.controls.password.valid){
-        alert("Ongeldige gebruikersnaam/wachtwoord.");
-      }
+    else if (!this.loginForm.controls.username.valid || !this.loginForm.controls.password.valid){
+      alert("Ongeldige gebruikersnaam/wachtwoord.");
     }
   }
 }

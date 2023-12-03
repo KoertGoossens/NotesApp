@@ -1,29 +1,31 @@
 <div class="headersec">
   <button class="button headbutton" (click)="toNotesOverview()">Alle berichten</button>
 </div>
-<h1 class="headtext">Bericht bewerken</h1>
-<form novalidate [formGroup]="noteForm" (ngSubmit)="submitNote()">
-  <table class="inputtable">
-    <tr>
-      <td class="inputlabel">
-        <label for="title">Onderwerp:</label>
-      </td>
-      <td>
-        <input type="text" id="title" name="title" formControlName="title">
-      </td>
-    </tr>
-    <tr class="inputtabletext">
-      <td>Gepost op:</td>
-      <td>{{ getNoteTimeCreated(note.timeCreated) }}</td>
-    </tr>
-    <tr>
-      <td class="inputlabel">
-        <label for="content">Bericht:</label>
-      </td>
-      <td>
-        <textarea id="content" name="content" rows="10" cols="max" formControlName="content"></textarea>
-      </td>
-    </tr>
-  </table>
-  <button class="button submitbutton" type="submit">Veranderingen opslaan</button>
-</form>
+<div class="body">
+  <h1 class="headtext">Bericht bewerken</h1>
+  <form novalidate [formGroup]="noteForm" (ngSubmit)="submitNote()">
+    <table class="inputtable">
+      <tr>
+        <td class="inputlabel">
+          <label for="title">Onderwerp:</label>
+        </td>
+        <td>
+          <input type="text" id="title" name="title" formControlName="title">
+        </td>
+      </tr>
+      <tr class="inputtabletext">
+        <td>Gepost op:</td>
+        <td>{{ getNoteTimeCreated(note.timeCreated) }}</td>
+      </tr>
+      <tr>
+        <td class="inputlabel">
+          <label for="content">Bericht:</label>
+        </td>
+        <td>
+          <textarea id="content" name="content" rows="10" cols="max" formControlName="content"></textarea>
+        </td>
+      </tr>
+    </table>
+    <button class="button submitbutton" type="submit">Veranderingen opslaan</button>
+  </form>
+</div>

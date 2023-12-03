@@ -1,38 +1,41 @@
-<h1 class="headtext">Account aanmaken</h1>
-<form novalidate [formGroup]="registerForm" (ngSubmit)="submitRegisterForm()">
-  <table class="inputtable">
-    <tr>
-      <td class="inputlabel">
-        <label for="text">Gebruikersnaam:</label>
-      </td>
-      <td>
-        <input type="text" id="username" name="username" formControlName="username">
-      </td>
-    </tr>
-    <tr>
-      <td class="inputlabel">
-        <label for="text">E-mailadres:</label>
-      </td>
-      <td>
-        <input type="email" id="email" name="email" formControlName="email">
-      </td>
-    </tr>
-    <tr>
-      <td class="inputlabel">
-        <label for="text">Wachtwoord:</label>
-      </td>
-      <td>
-        <input type="password" id="passwordA" name="passwordA" formControlName="passwordA">
-      </td>
-    </tr>
-    <tr>
-      <td class="inputlabel">
-        <label for="text">Herhaal wachtwoord:</label>
-      </td>
-      <td>
-        <input type="password" id="passwordB" name="passwordB" formControlName="passwordB">
-      </td>
-    </tr>
-  </table>
-  <button class="button submitbutton" type="submit">Account aanmaken</button>
-</form>
+<app-home-header [activeTab]="1"></app-home-header>
+<div class="body">
+  <h1 class="headtext">Account aanmaken</h1>
+  <form novalidate [formGroup]="registerForm" (ngSubmit)="submitRegisterForm()">
+    <table class="inputtable">
+      <tr>
+        <td class="inputlabel">
+          <label for="text">Gebruikersnaam:</label>
+        </td>
+        <td>
+          <input type="text" id="username" name="username" formControlName="username">
+        </td>
+      </tr>
+      <tr>
+        <td class="inputlabel">
+          <label for="text">E-mailadres:</label>
+        </td>
+        <td>
+          <input type="email" id="email" name="email" formControlName="email">
+        </td>
+      </tr>
+      <tr>
+        <td class="inputlabel">
+          <label for="text">Wachtwoord:</label>
+        </td>
+        <td>
+          <input type="password" id="passwordA" name="passwordA" formControlName="passwordA">
+        </td>
+      </tr>
+      <tr>
+        <td class="inputlabel">
+          <label for="text">Herhaal wachtwoord:</label>
+        </td>
+        <td>
+          <input type="password" id="passwordB" name="passwordB" formControlName="passwordB">
+        </td>
+      </tr>
+    </table>
+    <button class="button submitbutton" type="submit">Account aanmaken</button>
+  </form>  
+</div>

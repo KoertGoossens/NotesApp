@@ -20,6 +20,6 @@ export class ErrorMessageService {
     }
 
     this.authService.logoutUser();
-    this.router.navigateByUrl("home");
+    this.router.navigateByUrl("login");
   }
 }

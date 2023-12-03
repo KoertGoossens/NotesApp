@@ -1,15 +1,18 @@
-<h1 class="headtext">Mijn profiel</h1>
-<table class="texttable">
-  <tr>
-    <td>Gebruikersnaam:</td>
-    <td>{{ profile.username }}</td>
-  </tr>
-  <tr>
-    <td>E-mailadres:</td>
-    <td>{{ profile.email }}</td>
-  </tr>
-  <tr>
-    <td>Aangemaakt op:</td>
-    <td>{{ getUserDateCreated(profile.dateCreated) }}</td>
-  </tr>
-</table>
+<app-main-header [activeTab]="0"></app-main-header>
+<div class="body">
+  <h1 class="headtext">Mijn profiel</h1>
+  <table class="texttable">
+    <tr>
+      <td>Gebruikersnaam:</td>
+      <td>{{ profile.username }}</td>
+    </tr>
+    <tr>
+      <td>E-mailadres:</td>
+      <td>{{ profile.email }}</td>
+    </tr>
+    <tr>
+      <td>Aangemaakt op:</td>
+      <td>{{ getUserDateCreated(profile.dateCreated) }}</td>
+    </tr>
+  </table>
+</div>

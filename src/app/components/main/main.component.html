@@ -1,7 +1,0 @@
-<app-main-header (mainTab)="changeMainTab($event)"></app-main-header>
-<div [ngSwitch]="mainTab">
-  <app-profile *ngSwitchCase="0"></app-profile>
-  <app-viewnotes *ngSwitchCase="1"></app-viewnotes>
-  <app-writenote *ngSwitchCase="2"></app-writenote>
-  <app-adminpanel *ngSwitchCase="3"></app-adminpanel>
-</div>

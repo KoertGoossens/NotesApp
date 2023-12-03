@@ -13,10 +13,6 @@
   padding: 20px;
 }
 
-.header {
-  margin-bottom: 20px;
-}
-
 .headtext {
   margin: 4px;
   margin-bottom: 20px;
@@ -29,12 +25,16 @@
   font-size: 18px;
 }
 
+.body {
+  margin-top: 20px;
+}
+
 button:hover {
   transform: scale(1.05);
 }
 
 .button {
-  background-color: #525252;
+  background-color: #606060;
   color: #ffffff;
   font-size: 15px;
   margin: 4px;
