@@ -1,21 +1,21 @@
 <h1 class="headtext">Welkom op de berichtenapp!</h1>
 <h2 class="headtextsec">Log in of maak een account aan.</h2>
 <form novalidate [formGroup]="loginForm" (ngSubmit)="submitLoginForm()">
-  <table>
+  <table class="inputtable">
     <tr>
       <td>
-        <label class="inputlabel" for="text">Gebruikersnaam:</label>
+        <label for="text">Gebruikersnaam:</label>
       </td>
       <td>
-        <input class="inputtext" type="text" id="username" name="username" formControlName="username">
+        <input type="text" id="username" name="username" formControlName="username">
       </td>
     </tr>
     <tr>
       <td>
-        <label class="inputlabel" for="text">Wachtwoord:</label>
+        <label for="text">Wachtwoord:</label>
       </td>
       <td>
-        <input class="inputtext" type="password" id="password" name="password" formControlName="password">
+        <input type="password" id="password" name="password" formControlName="password">
       </td>
     </tr>
   </table>

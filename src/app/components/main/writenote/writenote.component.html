@@ -1,22 +1,22 @@
 <h1 class="headtext">Laat hier je bericht achter!</h1>
 <form novalidate [formGroup]="noteForm" (ngSubmit)="submitNote()">
-  <table>
+  <table class="inputtable">
     <tr>
-      <td>
-        <label class="inputlabel" for="title">Onderwerp:</label>
+      <td class="inputlabel">
+        <label for="title">Onderwerp:</label>
       </td>
       <td>
-        <input class="inputtext" type="text" id="title" name="title" formControlName="title">
+        <input type="text" id="title" name="title" formControlName="title">
       </td>
     </tr>
     <tr>
-      <td>
-        <label class="inputlabel" for="content">Bericht:</label>
+      <td class="inputlabel">
+        <label for="content">Bericht:</label>
       </td>
       <td>
-        <textarea class="inputtextbig" id="content" name="content" rows="10" cols="max" formControlName="content"></textarea>
+        <textarea name="content" rows="10" cols="max" formControlName="content"></textarea>
       </td>
     </tr>
   </table>
-  <button class="button submitbutton" type="submit">Bericht opslaan</button>
+  <button class="button submitbutton" type="submit">Bericht posten</button>
 </form>

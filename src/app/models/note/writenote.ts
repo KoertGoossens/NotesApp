@@ -1,8 +1,8 @@
 import { User } from "../user/user";
 
-export class NoteForList {
-  id: number = 0;
+export class WriteNote {
+  id?: number;
   title: string = "";
+  content: string = "";
   creator?: User;
-  timeCreated: string = "";
 }

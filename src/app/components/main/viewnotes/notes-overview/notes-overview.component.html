@@ -4,8 +4,11 @@
     <td>
       <button class="notebutton" (click)="toSingleNote(note.id)">{{ note.title }}</button>
     </td>
-    <td>
+    <td class="notestexttd">
       door {{ note.creator?.username }}
+    </td>
+    <td class="notestexttd">
+      op {{ getNoteTimeCreated(note.timeCreated) }}
     </td>
   </tr>
 </table>

@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Note } from 'src/app/models/note/note';
+import { WriteNote } from 'src/app/models/note/writenote';
+import { DatetimeService } from 'src/app/services/datetime.service';
 import { ErrorMessageService } from 'src/app/services/errormessage.service';
 import { NoteService } from 'src/app/services/http/note.service';
 
@@ -13,6 +15,8 @@ export class EditnoteComponent {
   @Input() noteId: number = 0;
   @Output() changeViewType: EventEmitter<number> = new EventEmitter();
 
+  note = new Note();
+
   noteForm = new FormGroup({
     title: new FormControl("", [Validators.required]),
     content: new FormControl("", [Validators.required]),
@@ -21,17 +25,23 @@ export class EditnoteComponent {
   constructor(
     private noteService: NoteService,
     private errorMessageService: ErrorMessageService,
-    ) {}
+    private datetimeService: DatetimeService
+  ) {}
 
   ngOnInit() {
     this.noteService.getNoteById(this.noteId).subscribe({
       next: n => {
-        this.noteForm.patchValue(n.data);
+        this.note = n.data;
+        this.noteForm.patchValue(this.note);
       },
       error: err => {
         this.errorMessageService.handleServerError(err);
       }
     });
+  }
+
+  getNoteTimeCreated(timeCreated: string): string {
+    return this.datetimeService.getDateTimeString(timeCreated)
   }
 
   toNotesOverview(){
@@ -40,7 +50,7 @@ export class EditnoteComponent {
 
   submitNote(){
     if(this.noteForm.valid){
-      const editedNote: Note = {
+      const editedNote: WriteNote = {
         id: this.noteId,
         title: this.noteForm.value.title!,
         content: this.noteForm.value.content!

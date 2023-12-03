@@ -52,30 +52,15 @@ button:hover {
   margin-top: 25px;
 }
 
-.inputlabel {
-  margin: 4px;
-  font-size: 14px;
-}
-
-.inputtext {
-  margin: 4px;
-  padding: 5px 5px;
-}
-
-.inputtextbig {
-  margin: 4px;
-  padding: 5px 5px;
-}
-
-table {
-  margin: 4px;
-}
-
 th {
   font-size: 16px;
   text-align: left;
   padding-right: 20px;
   padding-bottom: 5px;
+}
+
+table {
+  margin: 4px;
 }
 
 td {
@@ -84,4 +69,14 @@ td {
 
 .texttable td {
   padding: 5px 5px;
+}
+
+.inputtable input, textarea {
+  padding: 5px 5px;
+}
+
+.inputlabel {
+  vertical-align: top;
+  padding-right: 5px;
+  padding-top: 6px;
 }

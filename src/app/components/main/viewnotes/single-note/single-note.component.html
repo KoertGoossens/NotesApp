@@ -15,6 +15,10 @@
     <td>{{ note.creator?.username }}</td>
   </tr>
   <tr>
+    <td>Gepost op:</td>
+    <td>{{ getNoteTimeCreated(note.timeCreated) }}</td>
+  </tr>
+  <tr>
     <td>Bericht:</td>
     <td>{{ note.content }}</td>
   </tr>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Note } from 'src/app/models/note/note';
+import { WriteNote } from 'src/app/models/note/writenote';
 import { ErrorMessageService } from 'src/app/services/errormessage.service';
 import { NoteService } from 'src/app/services/http/note.service';
 
@@ -22,7 +22,7 @@ export class WritenoteComponent {
 
   submitNote(){
     if(this.noteForm.valid){
-      const note: Note = {
+      const note: WriteNote = {
         title: this.noteForm.value.title!,
         content: this.noteForm.value.content!
       };

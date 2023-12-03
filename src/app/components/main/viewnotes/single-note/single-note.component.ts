@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Note } from 'src/app/models/note/note';
 import { UserProfile } from 'src/app/models/user/userprofile';
+import { DatetimeService } from 'src/app/services/datetime.service';
 import { ErrorMessageService } from 'src/app/services/errormessage.service';
 import { NoteService } from 'src/app/services/http/note.service';
 import { UserService } from 'src/app/services/http/user.service';
@@ -22,6 +23,7 @@ export class SingleNoteComponent {
     private userService: UserService,
     private noteService: NoteService,
     private errorMessageService: ErrorMessageService,
+    private datetimeService: DatetimeService
     ) {}
   
   ngOnInit(){
@@ -46,6 +48,10 @@ export class SingleNoteComponent {
         this.errorMessageService.handleServerError(err);
       }
     });
+  }
+
+  getNoteTimeCreated(timeCreated: string): string {
+    return this.datetimeService.getDateTimeString(timeCreated)
   }
 
   toNotesOverview(){

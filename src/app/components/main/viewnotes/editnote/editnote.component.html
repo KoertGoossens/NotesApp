@@ -1,25 +1,29 @@
 <div class="headersec">
   <button class="button headbutton" (click)="toNotesOverview()">Alle berichten</button>
 </div>
-<h1>Bericht bewerken</h1>
+<h1 class="headtext">Bericht bewerken</h1>
 <form novalidate [formGroup]="noteForm" (ngSubmit)="submitNote()">
-  <table>
+  <table class="inputtable">
     <tr>
       <td>
-        <label class="inputlabel" for="title">Onderwerp:</label>
+        <label for="title">Onderwerp:</label>
       </td>
       <td>
-        <input class="inputtext" type="text" id="title" name="title" formControlName="title">
+        <input type="text" id="title" name="title" formControlName="title">
       </td>
     </tr>
     <tr>
+      <td>Gepost op:</td>
+      <td>{{ getNoteTimeCreated(note.timeCreated) }}</td>
+    </tr>
+    <tr>
       <td>
-        <label class="inputlabel" for="content">Bericht:</label>
+        <label for="content">Bericht:</label>
       </td>
       <td>
         <textarea id="content" name="content" rows="10" cols="max" formControlName="content"></textarea>
       </td>
     </tr>
   </table>
-  <button class="button submitbutton" type="submit">Bericht opslaan</button>
+  <button class="button submitbutton" type="submit">Veranderingen opslaan</button>
 </form>
