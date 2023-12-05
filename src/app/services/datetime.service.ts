@@ -25,10 +25,13 @@ export class DatetimeService {
   getDateTimeString(dateTime: string): string {
     const time = new Date(dateTime);
     let hour: string = time.getHours().toString();
-    const minute: string = time.getMinutes().toString();
+    let minute: string = time.getMinutes().toString();
     
     if(hour.length == 1){
       hour = "0" + hour;
+    }
+    if(minute.length == 1){
+      minute = "0" + minute;
     }
 
     const date = this.getDateString(dateTime);

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Note } from 'src/app/models/note/note';
 import { WriteNote } from 'src/app/models/note/writenote';
 import { DatetimeService } from 'src/app/services/datetime.service';
@@ -12,9 +13,7 @@ import { NoteService } from 'src/app/services/http/note.service';
   styleUrls: ['./editnote.component.css']
 })
 export class EditnoteComponent {
-  @Input() noteId: number = 0;
-  @Output() changeViewType: EventEmitter<number> = new EventEmitter();
-
+  noteId: number = 0;
   note = new Note();
 
   noteForm = new FormGroup({
@@ -25,10 +24,14 @@ export class EditnoteComponent {
   constructor(
     private noteService: NoteService,
     private errorMessageService: ErrorMessageService,
-    private datetimeService: DatetimeService
+    private datetimeService: DatetimeService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
+    this.noteId = Number(this.route.snapshot.paramMap.get('id'));
+
     this.noteService.getNoteById(this.noteId).subscribe({
       next: n => {
         this.note = n.data;
@@ -44,10 +47,6 @@ export class EditnoteComponent {
     return this.datetimeService.getDateTimeString(timeCreated)
   }
 
-  toNotesOverview(){
-    this.changeViewType.emit(0);
-  }
-
   submitNote(){
     if(this.noteForm.valid){
       const editedNote: WriteNote = {
@@ -59,7 +58,7 @@ export class EditnoteComponent {
       this.noteService.editNote(editedNote).subscribe({
         next: result => {
           alert("bericht gewijzigd");
-          window.location.reload();
+          this.router.navigateByUrl("notes");
         },
         error: err => {
           this.errorMessageService.handleServerError(err);

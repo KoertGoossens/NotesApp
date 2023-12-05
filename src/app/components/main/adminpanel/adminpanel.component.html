@@ -1,14 +1,16 @@
-<app-main-header [activeTab]="3"></app-main-header>
+<app-main-header [activeTab]="4"></app-main-header>
 <div class="body">
   <h1 class="headtext">Geregistreerde gebruikers</h1>
   <table class="texttable">
     <tr>
       <th>Gebruikersnaam</th>
       <th>E-mailadres</th>
+      <th>Geregistreerd sinds</th>
     </tr>
     <tr *ngFor="let user of users">
       <td>{{ user.username }}</td>
       <td>{{ user.email }}</td>
+      <td>{{ getUserDateCreated(user.dateCreated) }}</td>
     </tr>
   </table>
 </div>

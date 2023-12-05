@@ -25,8 +25,10 @@ export class MainHeaderComponent {
   ) {}
 
   ngOnInit(){
-    this.buttonColor[this.activeTab] = "#0080FF";
-
+    if(this.activeTab > 0){
+      this.buttonColor[this.activeTab - 1] = "#0080FF";
+    }
+    
     this.userService.getCurrentUser().subscribe({
       next: u => {
         this.user = u.data;

@@ -7,15 +7,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class HomeHeaderComponent {
   @Input() activeTab: number = 0;
-  @Output() homeTab: EventEmitter<number> = new EventEmitter();
   
   buttonColor: string[] = [];
 
   ngOnInit(){
     this.buttonColor[this.activeTab] = "#0080FF";
-  }
-
-  changeHomeTab(tab: number){
-    this.homeTab.emit(tab);
   }
 }

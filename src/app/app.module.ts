@@ -14,11 +14,11 @@ import { SignupComponent } from './components/home/signup/signup.component';
 import { MainHeaderComponent } from './components/main/main-header/main-header.component';
 import { WritenoteComponent } from './components/main/writenote/writenote.component';
 import { ViewnotesComponent } from './components/main/viewnotes/viewnotes.component';
-import { NotesOverviewComponent } from './components/main/viewnotes/notes-overview/notes-overview.component';
-import { SingleNoteComponent } from './components/main/viewnotes/single-note/single-note.component';
-import { EditnoteComponent } from './components/main/viewnotes/editnote/editnote.component';
+import { SingleNoteComponent } from './components/main/single-note/single-note.component';
+import { EditnoteComponent } from './components/main/editnote/editnote.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { AdminpanelComponent } from './components/main/adminpanel/adminpanel.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -30,11 +30,11 @@ import { AdminpanelComponent } from './components/main/adminpanel/adminpanel.com
     MainHeaderComponent,
     WritenoteComponent,
     ViewnotesComponent,
-    NotesOverviewComponent,
     SingleNoteComponent,
     EditnoteComponent,
     PagenotfoundComponent,
-    AdminpanelComponent
+    AdminpanelComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -45,9 +45,9 @@ import { AdminpanelComponent } from './components/main/adminpanel/adminpanel.com
   ],
   providers: [
     {
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]

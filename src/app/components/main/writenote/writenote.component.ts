@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { WriteNote } from 'src/app/models/note/writenote';
 import { ErrorMessageService } from 'src/app/services/errormessage.service';
 import { NoteService } from 'src/app/services/http/note.service';
@@ -13,7 +14,8 @@ export class WritenoteComponent {
   constructor(
     private noteService: NoteService,
     private errorMessageService: ErrorMessageService,
-    ) {}
+    private router: Router
+  ) {}
 
   noteForm = new FormGroup({
     title: new FormControl("", [Validators.required]),
@@ -30,7 +32,7 @@ export class WritenoteComponent {
       this.noteService.submitNote(note).subscribe({
         next: result => {
           alert("Bericht aangemaakt.");
-          window.location.reload();
+          this.router.navigateByUrl("notes");
         },
         error: err => {
           this.errorMessageService.handleServerError(err);

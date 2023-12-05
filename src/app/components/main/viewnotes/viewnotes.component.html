@@ -1,6 +1,17 @@
-<app-main-header [activeTab]="1"></app-main-header>
-<div [ngSwitch]="viewType">
-  <app-notes-overview *ngSwitchCase="0" (changeViewType)="toSingleNoteView($event)"></app-notes-overview>
-  <app-single-note *ngSwitchCase="1" [noteId]="noteId" (changeViewType)="toNotesOverview($event)"></app-single-note>
-  <app-editnote *ngSwitchCase="2" [noteId]="noteId" (changeViewType)="toNotesOverview($event)"></app-editnote>
+<app-main-header [activeTab]="2"></app-main-header>
+<div class="body">
+  <h1 class="headtext">Alle berichten</h1>
+  <table>
+    <tr *ngFor="let note of notes">
+      <td>
+        <button class="notebutton" (click)="toSingleNote(note.id)">{{ note.title }}</button>
+      </td>
+      <td class="notestexttd">
+        door {{ note.creator?.username }}
+      </td>
+      <td class="notestexttd">
+        op {{ getNoteTimeCreated(note.timeCreated) }}
+      </td>
+    </tr>
+  </table>
 </div>

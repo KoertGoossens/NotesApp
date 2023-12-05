@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { NoteForList } from 'src/app/models/note/noteforlist';
+import { DatetimeService } from 'src/app/services/datetime.service';
+import { ErrorMessageService } from 'src/app/services/errormessage.service';
+import { NoteService } from 'src/app/services/http/note.service';
 
 @Component({
   selector: 'app-viewnotes',
@@ -6,15 +11,31 @@ import { Component } from '@angular/core';
   styleUrls: ['./viewnotes.component.css']
 })
 export class ViewnotesComponent {
-  viewType: number = 0;
-  noteId: number = 0;
+  notes: NoteForList[] = [];
 
-  toSingleNoteView(id: number) {
-    this.viewType = 1;
-    this.noteId = id;
+  constructor(
+    private router: Router,
+    private noteService: NoteService,
+    private errorMessageService: ErrorMessageService,
+    private datetimeService: DatetimeService
+  ) {}
+
+  ngOnInit() {
+    this.noteService.getAllNotes().subscribe({
+      next: n => {
+        this.notes = n.data;
+      },
+      error: err => {
+        this.errorMessageService.handleServerError(err);
+      }
+    });
   }
 
-  toNotesOverview(viewType: number) {
-    this.viewType = viewType;
+  getNoteTimeCreated(timeCreated: string): string {
+    return this.datetimeService.getDateTimeString(timeCreated)
+  }
+
+  toSingleNote(id: number){
+    this.router.navigate(["note", id]);
   }
 }

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class PagenotfoundComponent {
   constructor(private router: Router) {}
 
-  returnToLogin(){
-    this.router.navigateByUrl("login");
+  returnToProfileOrLogin(){
+    this.router.navigateByUrl("profile");
   }
 }

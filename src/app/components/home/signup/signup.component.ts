@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user/user';
 import { ErrorMessageService } from 'src/app/services/errormessage.service';
 import { AuthService } from 'src/app/services/http/auth.service';
@@ -10,11 +11,10 @@ import { AuthService } from 'src/app/services/http/auth.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
-  @Output() homeTab: EventEmitter<number> = new EventEmitter();
-  
   constructor(
     private authService: AuthService,
     private errorMessageService: ErrorMessageService,
+    private router: Router
   ) {}
   
   registerForm = new FormGroup({
@@ -39,7 +39,7 @@ export class SignupComponent {
         this.authService.registerUser(user).subscribe({
           next: result => {
             alert("Account aangemaakt.");
-            this.homeTab.emit(0);
+            this.router.navigateByUrl("login");
           },
           error: err => {
             this.errorMessageService.handleServerError(err);

@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Note } from 'src/app/models/note/note';
 import { UserProfile } from 'src/app/models/user/userprofile';
 import { DatetimeService } from 'src/app/services/datetime.service';
@@ -12,9 +13,7 @@ import { UserService } from 'src/app/services/http/user.service';
   styleUrls: ['./single-note.component.css']
 })
 export class SingleNoteComponent {
-  @Input() noteId: number = 0;
-  @Output() changeViewType: EventEmitter<number> = new EventEmitter();
-
+  noteId: number = 0;
   profile = new UserProfile();
   note = new Note();
   allowEditNote: boolean = false;
@@ -23,10 +22,14 @@ export class SingleNoteComponent {
     private userService: UserService,
     private noteService: NoteService,
     private errorMessageService: ErrorMessageService,
-    private datetimeService: DatetimeService
-    ) {}
+    private datetimeService: DatetimeService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
   
   ngOnInit(){
+    this.noteId = Number(this.route.snapshot.paramMap.get('id'));
+
     this.userService.getCurrentUser().subscribe({
       next: p => {
         this.profile = p.data;
@@ -54,12 +57,8 @@ export class SingleNoteComponent {
     return this.datetimeService.getDateTimeString(timeCreated)
   }
 
-  toNotesOverview(){
-    this.changeViewType.emit(0);
-  }
-
   editNote(){
-    this.changeViewType.emit(2);
+    this.router.navigate(["editnote", this.noteId]);
   }
 
   deleteNote(){
@@ -72,6 +71,6 @@ export class SingleNoteComponent {
       }
     });
 
-    window.location.reload();
+    this.router.navigateByUrl("notes");
   }
 }
