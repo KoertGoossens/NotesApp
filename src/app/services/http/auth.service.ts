@@ -21,10 +21,16 @@ export class AuthService {
 
   public loginUser(user: LoginUser): Observable<ServiceResponse> {
     const url = `${this.apiUrl}/login`;
-    return this.http.post<ServiceResponse>(url, user);
+    return this.http.post<ServiceResponse>(url, user, { withCredentials: true });
   }
 
-  public logoutUser(){
-    localStorage.removeItem("authToken");
+  public refreshToken(): Observable<ServiceResponse> {
+    const url = `${this.apiUrl}/refreshtoken`;
+    return this.http.post<ServiceResponse>(url, {}, { withCredentials: true });
+  }
+
+  public logoutUser(): Observable<ServiceResponse> {
+    const url = `${this.apiUrl}/logout`;
+    return this.http.post<ServiceResponse>(url, {}, { withCredentials: true });
   }
 }

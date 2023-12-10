@@ -2,8 +2,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserProfile } from 'src/app/models/user/userprofile';
 import { ErrorMessageService } from 'src/app/services/errormessage.service';
-import { AuthService } from 'src/app/services/http/auth.service';
 import { UserService } from 'src/app/services/http/user.service';
+import { LogoutService } from 'src/app/services/logout.service';
 
 @Component({
   selector: 'app-main-header',
@@ -19,9 +19,9 @@ export class MainHeaderComponent {
 
   constructor(
     private router: Router,
-    private authService: AuthService,
     private userService: UserService,
-    private errorMessageService: ErrorMessageService
+    private errorMessageService: ErrorMessageService,
+    private logoutService: LogoutService
   ) {}
 
   ngOnInit(){
@@ -44,7 +44,7 @@ export class MainHeaderComponent {
   }
 
   onLogoutUser(){
-    this.authService.logoutUser();
+    this.logoutService.logoutUser();
     this.router.navigateByUrl("login");
   }
 }

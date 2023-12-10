@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from './http/auth.service';
 import { BehaviorSubject } from 'rxjs';
 import { ErrorMessage } from '../models/errormessage';
+import { LogoutService } from './logout.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class ErrorMessageService {
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private logoutService: LogoutService
   ) {}
 
   public handleServerError(err: any){
@@ -23,7 +23,7 @@ export class ErrorMessageService {
     }
 
     this.errorMessageSubject.next(errorMessage);
-    this.authService.logoutUser();
+    this.logoutService.logoutUser();
     this.router.navigateByUrl("error");
   }
 }
