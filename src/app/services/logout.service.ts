@@ -15,6 +15,10 @@ export class LogoutService {
       }
     });
 
+    this.logoutUserRemoveToken();
+  }
+
+  public logoutUserRemoveToken(){
     localStorage.removeItem("authToken");
   }
 }

@@ -2,12 +2,13 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Injectable } from "@angular/core";
 import { Observable, catchError, of, switchMap, tap, throwError } from "rxjs";
 import { AuthService } from "./http/auth.service";
+import { ErrorMessageService } from "./errormessage.service";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  errorCounter: number = 0;
-
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private errorMessageService: ErrorMessageService) {}
   
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = localStorage.getItem("authToken");
@@ -22,9 +23,7 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   private handleAuthError(err: HttpErrorResponse): Observable<any> {
-    if(err.status === 401 && this.errorCounter == 0){
-      this.errorCounter++;
-
+    if(err.status === 401){
       this.authService.refreshToken().subscribe({
         next: token => {
           localStorage.setItem("authToken", token.data);
@@ -33,8 +32,8 @@ export class AuthInterceptor implements HttpInterceptor {
         }
       });
     }
-    else {
-      this.errorCounter = 0;
+    else{
+      this.errorMessageService.handleServerError(err);
     }
 
     return of(null);
